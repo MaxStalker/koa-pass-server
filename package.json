@@ -1,0 +1,16 @@
+{
+  "name": "koa-pass-server",
+  "version": "1.0.0",
+  "description": "Node server running koa and using passport for authentication",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koa",
+    "passport",
+    "authentication"
+  ],
+  "author": "Max Daunarovich",
+  "license": "ISC"
+}
