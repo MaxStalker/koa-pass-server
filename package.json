@@ -2,9 +2,10 @@
   "name": "koa-pass-server",
   "version": "1.0.0",
   "description": "Node server running koa and using passport for authentication",
-  "main": "main.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "node --harmony app.js"
   },
   "keywords": [
     "koa",
@@ -12,5 +13,8 @@
     "authentication"
   ],
   "author": "Max Daunarovich",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^1.2.0"
+  }
 }
