@@ -1,8 +1,8 @@
 "use strict";
 
 const
-    APORT = 3320,
-    Router = require('koa-router'),
+    APP_PORT = 3000,
+    router = require('koa-router')(),
     koa = require('koa'),
     app = koa();
 
@@ -11,15 +11,21 @@ function *reqlogger(next){
     console.log('%s - %s %s', new Date().toISOString(), this.req.method, this.req.url);
     yield next;
 }
-app.use(reqlogger);
+app
+    .use(reqlogger)
+    .use(router.routes())
+    .use(router.allowedMethods())
+    .listen(APP_PORT);
 
-app.use(Router(app));
+router
+    .get('/', function *(){
+        this.body = "Welcome to Start Page";
+    })
+    .get('/auth/github', function *(){
+        this.body = "Authenticate with GitHub OAUTH API";
+    });
 
-app.get('/', function *(){
-    console.log("Express-style example");
-    this.body = "This is root page";
-});
-
+/*
 const publicRouter = new Router();
 
 publicRouter.get('/auth/github', function *(){
@@ -31,7 +37,5 @@ app.use(publicRouter.middleware());
 
 app.use(function *(){
     this.body = "Hello, world!";
-});
-
-app.listen(APORT);
-console.log('Listening on port ' + APORT);
+});*/
+console.log('Listening on port ' + APP_PORT);
